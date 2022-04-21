@@ -1,5 +1,4 @@
 node {
-    agent any
     
     environment {
         PROJECT_NAME = "Neptun"
