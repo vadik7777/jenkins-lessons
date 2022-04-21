@@ -1,9 +1,4 @@
 node {
-    
-    environment {
-        PROJECT_NAME = "Neptun"
-        OWNER_NAME = "Vadim Konovalov"
-    }
         stage('1-Build') {
             steps {
                 echo "Start of Stage Build"
