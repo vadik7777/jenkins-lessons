@@ -4,8 +4,6 @@ node {
         PROJECT_NAME = "Neptun"
         OWNER_NAME = "Vadim Konovalov"
     }
-
-    stages {
         stage('1-Build') {
             steps {
                 echo "Start of Stage Build"
@@ -34,5 +32,4 @@ node {
                 echo "End of Stage Deploy"
             }
         }
-    }
 }
