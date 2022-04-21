@@ -8,8 +8,6 @@ node {
                 echo "Start of Stage Test"
                 echo 'Testing............'
                 sh "ls -la"
-                echo "Hello ${OWNER_NAME}"
-                echo "Project name is ${PROJECT_NAME}"
                 echo "End of Stage Test"
         }
         stage('3-Deploy') {
