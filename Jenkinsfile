@@ -1,4 +1,4 @@
-node {
+node('Node1') {
         stage('1-Build') {
                 echo "Start of Stage Build"
                 echo 'Building............'
