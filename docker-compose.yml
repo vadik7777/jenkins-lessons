@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+
+  docker:
+    image: docker:dind
+#    command: --storage-driver overlay2 //linux version
+    restart: always
+    privileged: true
+    ports:
+      - ":2376"
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - jenkins-docker-certs:/certs/client
+      - jenkins-data:/var/jenkins_home
+    networks:
+      - jenkins
+
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8789:8080"
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    volumes:
+      - jenkins-docker-certs:/certs/client:ro
+      - jenkins-data:/var/jenkins_home
+    depends_on:
+      - docker
+    networks:
+      - jenkins
+
+volumes:
+  jenkins-docker-certs:
+  jenkins-data:
+
+networks:
+  jenkins:
