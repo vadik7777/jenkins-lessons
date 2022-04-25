@@ -10,3 +10,6 @@ RUN echo "deb [arch=$(dpkg --print-architecture) \
 RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28"
+COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
+#sugest
+#RUN jenkins-plugin-cli --plugins "cloudbees-folder antisamy-markup-formatter build-timeout credentials-binding timestamper ws-cleanup "

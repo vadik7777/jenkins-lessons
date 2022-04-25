@@ -23,7 +23,11 @@ services:
     restart: always
     ports:
       - "8789:8080"
+      - "50000:50000"
     environment:
+      - JENKINS_USER=admin
+      - JENKINS_PASS=password
+      - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
       - DOCKER_TLS_VERIFY=1
