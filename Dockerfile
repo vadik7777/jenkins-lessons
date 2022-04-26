@@ -12,4 +12,5 @@ USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28"
 COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 #sugest
-#RUN jenkins-plugin-cli --plugins "cloudbees-folder antisamy-markup-formatter build-timeout credentials-binding timestamper ws-cleanup "
+COPY suggest-plugins.txt /var/jenkins_home/
+RUN jenkins-plugin-cli --plugins < /var/jenkins_home/suggest-plugins.txt
